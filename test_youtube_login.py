@@ -8,7 +8,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 # Youtube credentials
 VALID_EMAIL = 't70323534@gmail.com'
-VALID_PASSWORD = 'test123'
+VALID_PASSWORD = 'test1234!'
 INVALID_PASSWORD = 'invalid123'
 
 
@@ -43,7 +43,13 @@ def test_valid_login(driver):
         EC.presence_of_element_located((By.ID, 'password'))
     )
     password_input.send_keys(VALID_PASSWORD)
-    # Click 'Next' button//*[@id="passwordNext"]/div/button/div[1]
-
     # Click 'Next' button
+    password_next= WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.ID, 'passwordNext'))
+    )
+    password_next.click()
     # Confirm successful login by finding profile icon
+    profile_pic = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.XPATH, '//*[@id="header-bar"]/header/div/ytm-topbar-menu-button-renderer/button/ytm-profile-icon/img'))
+    )
+    assert profile_pic is not None
