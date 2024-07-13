@@ -34,6 +34,16 @@ def test_valid_login(driver):
     )
     username_input.send_keys(VALID_EMAIL)
     # Click 'Next' button
+    username_next= WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.ID, 'identifierNext'))
+    )
+    username_next.click()
     # Enter valid password
+    password_input = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.ID, 'password'))
+    )
+    password_input.send_keys(VALID_PASSWORD)
+    # Click 'Next' button//*[@id="passwordNext"]/div/button/div[1]
+
     # Click 'Next' button
     # Confirm successful login by finding profile icon
