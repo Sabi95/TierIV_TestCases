@@ -43,8 +43,13 @@ def login(driver, email, password):
 def test_valid_login(driver):
     # Log in to LinkedIn with VALID credentials
     login(driver, VALID_EMAIL, VALID_PASSWORD)
-    # Confirm successful login by finding profile pic
-    print ("Logged in Successfully")
+    # Confirm SUCCESSFUL login by finding verification field
+    verification_message = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.ID, 'input-verification-code'))
+    )
+    assert verification_message is not None
+
+    #print ("Logged in Successfully")
 
 def test_invalid_login(driver):
     # Log in to LinkedIn with INVALID credentials
