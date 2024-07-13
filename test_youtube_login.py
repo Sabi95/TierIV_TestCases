@@ -30,12 +30,12 @@ def test_valid_login(driver):
     login_button.click()
     # Enter valid email
     username_input = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.XPATH, '//*[@id="identifierId"]'))
+        EC.presence_of_element_located((By.XPATH, '//*[@id="identifierNext"]/div/button'))
     )
     username_input.send_keys(VALID_EMAIL)
     # Click 'Next' button
     username_next= WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.ID, 'identifierNext'))
+        EC.element_to_be_clickable((By.XPATH, '//*[@id="identifierId"]'))
     )
     username_next.click()
     # Enter valid password
@@ -45,11 +45,11 @@ def test_valid_login(driver):
     password_input.send_keys(VALID_PASSWORD)
     # Click 'Next' button
     password_next= WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.ID, 'passwordNext'))
+        EC.element_to_be_clickable((By.XPATH, '//*[@id="passwordNext"]/div/button'))
     )
     password_next.click()
     # Confirm successful login by finding profile icon
     profile_pic = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.XPATH, '//*[@id="header-bar"]/header/div/ytm-topbar-menu-button-renderer/button/ytm-profile-icon/img'))
+        EC.presence_of_element_located((By.XPATH, '//yt-icon[@id="guide-icon"]'))
     )
     assert profile_pic is not None
