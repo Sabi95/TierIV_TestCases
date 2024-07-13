@@ -33,7 +33,7 @@ def test_valid_login(driver):
         EC.presence_of_element_located((By.XPATH, '//*[@id="identifierNext"]/div/button'))
     )
     username_input.send_keys(VALID_EMAIL)
-    # Click 'Next' button
+    # Click 'Next' buttongit
     username_next= WebDriverWait(driver, 10).until(
         EC.element_to_be_clickable((By.XPATH, '//*[@id="identifierId"]'))
     )
