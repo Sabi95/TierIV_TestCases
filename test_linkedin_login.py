@@ -51,6 +51,9 @@ def test_invalid_login(driver):
     login(driver, INVALID_EMAIL, INVALID_PASSWORD)
     # Confirm login FAIL by finding error message
     error_message = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.ID, 'error-for-username', 'error-for-password'))
+        EC.presence_of_any_elements_located([
+            (By.ID, 'error-for-username'),
+            (By.ID, 'error-for-password')
+        ])
     )
     assert error_message is not None
