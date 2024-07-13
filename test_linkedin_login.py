@@ -26,17 +26,17 @@ def login(driver, email, password):
     driver.get('https://www.linkedin.com/login')
     # Identify email field and enter email
     email_field = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located(By.ID, 'username')
+        EC.presence_of_element_located((By.ID, 'username'))
     )
     email_field.send_keys(email)
     # Identify password field and enter password
     password_field = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located(By.ID, 'password')
+        EC.presence_of_element_located((By.ID, 'password'))
     )
     password_field.send_keys(password)
     # Identify login button and click 'Sign In' button
     login_button = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable(By.XPATH, '//*[@type="submit"]')
+        EC.element_to_be_clickable((By.XPATH, '//*[@type="submit"]'))
     )
     login_button.click()
 
@@ -51,6 +51,6 @@ def test_invalid_login(driver):
     login(driver, INVALID_EMAIL, INVALID_PASSWORD)
     # Confirm login FAIL by finding error message
     error_message = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located(By.CLASS_NAME, 'form__label--error')
+        EC.presence_of_element_located((By.CLASS_NAME, 'form__label--error'))
     )
     assert error_message is not None
