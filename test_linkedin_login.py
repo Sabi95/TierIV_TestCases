@@ -44,6 +44,10 @@ def test_valid_login(driver):
     # Log in to LinkedIn with VALID credentials
     login(driver, VALID_EMAIL, VALID_PASSWORD)
     # Confirm there is no error message
+     error_message = WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.CLASS_NAME, 'form__label--error'))
+    )
+    assert error_message is None
     print ("Logged in Successfully")
 
 def test_invalid_login(driver):
