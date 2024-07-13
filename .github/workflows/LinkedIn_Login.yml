@@ -10,7 +10,7 @@ on:
   workflow_dispatch: {}
   
 jobs:
-  test:
+  Logging_In:
     runs-on: ubuntu-latest
 
     steps:
