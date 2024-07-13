@@ -30,7 +30,7 @@ def test_valid_login(driver):
     login_button.click()
     # Enter valid email
     username_input = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.ID, 'identifierId'))
+        EC.presence_of_element_located((By.XPATH, '//*[@id="identifierId"]'))
     )
     username_input.send_keys(VALID_EMAIL)
     # Click 'Next' button
@@ -40,7 +40,7 @@ def test_valid_login(driver):
     username_next.click()
     # Enter valid password
     password_input = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.ID, 'password'))
+        EC.presence_of_element_located((By.XPATH, '//*[@id="password"]/div[1]/div/div[1]/input'))
     )
     password_input.send_keys(VALID_PASSWORD)
     # Click 'Next' button
